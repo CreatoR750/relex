@@ -1,0 +1,25 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/mixins.scss";
+
+.header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__logo {
+        @include headerFont;
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%;
+
+        &__link {
+            cursor: pointer;
+            @include linksFont;
+        }
+    }
+}

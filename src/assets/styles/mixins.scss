@@ -1,0 +1,28 @@
+@mixin baseShadow {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+@mixin headerFont {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+@mixin linksFont {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+@mixin pageTitleFont {
+}
+
+@mixin inputMixin {
+    font-size: 18px;
+    width: 100%;
+    border: none;
+    text-decoration: none;
+    border-bottom: 1px solid $black;
+    &:focus {
+        outline: none;
+        border-bottom: 1px solid $orange;
+    }
+}

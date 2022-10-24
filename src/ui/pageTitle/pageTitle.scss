@@ -1,0 +1,10 @@
+@import "../../assets/styles/colors.scss";
+
+.page-title {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    span {
+        font-weight: 600;
+    }
+}
