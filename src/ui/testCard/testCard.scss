@@ -20,6 +20,12 @@
             font-size: 18px;
         }
 
+        div {
+            display: flex;
+            align-items: center;
+            width: 25%;
+        }
+
         &__icon {
             cursor: pointer;
         }

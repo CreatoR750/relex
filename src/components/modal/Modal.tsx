@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../ui/button/Button";
 import "./modal.scss";
+import { IQuestion } from "../../models/questions";
 
 interface IModalProps {
     setIsOpen: React.Dispatch<React.SetStateAction<Boolean>>;
-    onSave: (question: IQuestionProps) => void;
-}
-
-export interface IQuestionProps {
-    question: string;
-    0: string;
-    1: string;
-    2: string;
-    3: string;
-    answer: number;
+    onSave: (question: IQuestion) => void;
 }
 
 const Modal = ({ setIsOpen, onSave }: IModalProps) => {
-    const [questionContainer, setQuestionContainer] = useState<IQuestionProps>({ question: "", 0: "", 1: "", 2: "", 3: "", answer: -1 });
+    const [questionContainer, setQuestionContainer] = useState<IQuestion>({ question: "", 0: "", 1: "", 2: "", 3: "", answer: -1 });
 
     useEffect(() => {
         console.log(questionContainer);

@@ -3,19 +3,25 @@ import TestCard from "../../ui/testCard/TestCard";
 import "./testsList.scss";
 import { testsList } from "../../const/tests";
 import Button from "../../ui/button/Button";
-import Modal from "../modal/Modal";
+import { ITest } from "../../models/test";
+
 import AddCard from "../../ui/addCard/AddCard";
+import { useNavigate } from "react-router-dom";
+import { RoutesConfig } from "../../config/routes.config";
 
 const TestsList = () => {
-    const [tests, setTests] = useState(testsList);
-    const [isModalOpen, setIsModalOpen] = useState<Boolean>(false);
+    let navigate = useNavigate();
+    const [tests, setTests] = useState<ITest[]>(testsList);
     const [isAddCardOpen, setIsAddCardOpen] = useState<Boolean>(false);
 
     useEffect(() => {
-        console.log(tests);
-    }, [tests]);
+        let auth: string | null = JSON.parse(localStorage.getItem("auth")!);
+        if (!auth) {
+            navigate(RoutesConfig.LOGIN_PAGE);
+        }
+    }, []);
 
-    const addTest = (test: any): void => {
+    const addTest = (test: ITest): void => {
         let testsCopy = [...tests];
         testsCopy.push(test);
         setTests(testsCopy);
@@ -50,12 +56,11 @@ const TestsList = () => {
                         />
                     );
                 })}
-                {isAddCardOpen && (
+                {isAddCardOpen ? (
                     <div className="tests-list__space">
                         <AddCard setIsOpen={setIsAddCardOpen} onTestSave={(test) => addTest(test)} />
                     </div>
-                )}
-                {!isAddCardOpen && (
+                ) : (
                     <div className="tests-list__space">
                         <Button text="Добавить тест" onClick={() => setIsAddCardOpen(true)} />
                     </div>

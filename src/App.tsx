@@ -6,11 +6,7 @@ import Footer from "./components/footer/Footer";
 import PageTitle from "./ui/pageTitle/PageTitle";
 
 function App() {
-    return (
-        <>
-            <Router />
-        </>
-    );
+    return <Router />;
 }
 
 export default App;

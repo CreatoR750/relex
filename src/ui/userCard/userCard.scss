@@ -1,0 +1,79 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.user-card {
+    width: 100%;
+    min-height: 100px;
+    padding: 20px;
+    background: $white;
+    border-radius: $baseBorder;
+    @include baseShadow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    &__info {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__dropdown {
+            display: flex;
+            justify-content: space-between;
+        }
+        div {
+            display: flex;
+            width: 25%;
+            align-items: center;
+        }
+
+        span {
+            font-size: 18px;
+        }
+    }
+
+    &__statistic {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        div {
+            display: flex;
+            align-items: center;
+            width: 25%;
+        }
+        span {
+            font-size: 18px;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        h1 {
+            font-weight: 500;
+        }
+    }
+
+    &__table {
+        display: flex;
+        width: 100%;
+        height: 50px;
+        justify-content: space-between;
+
+        &__column {
+            font-size: 18px;
+            display: flex;
+            width: 25%;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

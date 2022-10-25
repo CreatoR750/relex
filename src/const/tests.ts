@@ -1,4 +1,6 @@
-export const testsList = [
+import { ITest } from "../models/test";
+
+export const testsList: ITest[] = [
     {
         id: "1",
         name: "Фильмы",

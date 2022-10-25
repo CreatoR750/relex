@@ -14,9 +14,11 @@ const LoginForm = () => {
     const navigate = useNavigate();
 
     let [credentials, setCredentials] = useState<ICredentials>({ name: "", password: "" });
+
     useEffect(() => {
-        console.log(credentials);
-    }, [credentials]);
+        let auth: string | null = JSON.parse(localStorage.getItem("auth")!);
+        auth && navigate(RoutesConfig.TESTS_PAGE);
+    }, []);
 
     const loginHandler = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();

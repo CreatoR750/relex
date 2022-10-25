@@ -21,24 +21,28 @@ const TestCard = (props: ITestCardProps) => {
     };
 
     return (
-        <div className="container">
-            <div className="test-card">
-                <div className="test-card__wrapper">
+        <div className="test-card">
+            <div className="test-card__wrapper">
+                <div>
                     <span>Название: {props.name}</span>
-                    <span>Тема:{props.theme}</span>
-                    <span>{props.questionsAmount} вопросов</span>
-                    <div>
-                        <span>Активен</span>
-                        <input
-                            type="checkbox"
-                            checked={Boolean(!isDisabled)}
-                            onChange={() => {
-                                visibleHandler();
-                            }}
-                        />
-                    </div>
-                    <img className="test-card__wrapper__icon" src={del} alt="Удалить" onClick={() => props.onDelete!(props.id)} />
                 </div>
+                <div>
+                    <span>Тема:{props.theme}</span>
+                </div>
+                <div>
+                    <span>{props.questionsAmount} вопросов</span>
+                </div>
+                <div>
+                    <span>Активен</span>
+                    <input
+                        type="checkbox"
+                        checked={Boolean(!isDisabled)}
+                        onChange={() => {
+                            visibleHandler();
+                        }}
+                    />
+                </div>
+                <img className="test-card__wrapper__icon" src={del} alt="Удалить" onClick={() => props.onDelete!(props.id)} />
             </div>
         </div>
     );
