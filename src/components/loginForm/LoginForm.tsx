@@ -13,8 +13,9 @@ interface ICredentials {
 const LoginForm = () => {
     const navigate = useNavigate();
 
-    let [credentials, setCredentials] = useState<ICredentials>({ name: "", password: "" });
-
+    const [credentials, setCredentials] = useState<ICredentials>({ name: "", password: "" });
+    const [error, setError] = useState<string>("");
+    
     useEffect(() => {
         let auth: string | null = JSON.parse(localStorage.getItem("auth")!);
         auth && navigate(RoutesConfig.TESTS_PAGE);
@@ -23,10 +24,9 @@ const LoginForm = () => {
     const loginHandler = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         if (credentials.name === loginCredentials.name && credentials.password === loginCredentials.password) {
-            let auth: boolean = true;
-            localStorage.setItem("auth", JSON.stringify(auth));
+            localStorage.setItem("auth", JSON.stringify(true));
             navigate(RoutesConfig.TESTS_PAGE);
-        }
+        } else setError("Неверный логин или пароль");
     };
 
     return (
@@ -36,21 +36,21 @@ const LoginForm = () => {
                 loginHandler(event);
             }}
         >
-            <h1 className="login-form__header">Login</h1>
+            <h1 className="login-form__header">
+                Log<span>in</span>
+            </h1>
+
             <div className="login-form__inputs">
                 <input
                     type="text"
-                    placeholder="Nickname"
+                    placeholder="Логин"
                     autoComplete="true"
                     onChange={(event) => setCredentials({ ...credentials, name: event.target.value })}
                 />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    onChange={(event) => setCredentials({ ...credentials, password: event.target.value })}
-                />
+                <input type="password" placeholder="Пароль" onChange={(event) => setCredentials({ ...credentials, password: event.target.value })} />
             </div>
-            <Button text="Login" />
+            <div className="login-form__error">{error}</div>
+            <Button text="Войти" />
         </form>
     );
 };

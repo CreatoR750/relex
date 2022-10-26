@@ -4,15 +4,15 @@ import "./testsList.scss";
 import { testsList } from "../../const/tests";
 import Button from "../../ui/button/Button";
 import { ITest } from "../../models/test";
-
 import AddCard from "../../ui/addCard/AddCard";
 import { useNavigate } from "react-router-dom";
 import { RoutesConfig } from "../../config/routes.config";
 
+
 const TestsList = () => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const [tests, setTests] = useState<ITest[]>(testsList);
-    const [isAddCardOpen, setIsAddCardOpen] = useState<Boolean>(false);
+    const [isAddCardOpen, setIsAddCardOpen] = useState<boolean>(false);
 
     useEffect(() => {
         let auth: string | null = JSON.parse(localStorage.getItem("auth")!);

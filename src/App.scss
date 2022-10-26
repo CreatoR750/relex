@@ -11,3 +11,10 @@
     margin: 0 auto;
     width: 1200px;
 }
+
+@media screen and (max-width: 1300px) {
+    .container {
+        margin: 0 auto;
+        width: 90vw;
+    }
+}

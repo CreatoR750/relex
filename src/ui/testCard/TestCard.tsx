@@ -4,16 +4,16 @@ import del from "../../assets/svg/delete.svg";
 
 interface ITestCardProps {
     id: string;
-    name?: string;
-    theme?: string;
+    name: string;
+    theme: string;
     questionsAmount?: number;
-    isDisabled?: boolean;
-    onDelete?: (id: string) => void;
-    onChecked?: (id: string) => void;
+    isDisabled: boolean;
+    onDelete: (id: string) => void;
+    onChecked: (id: string) => void;
 }
 
 const TestCard = (props: ITestCardProps) => {
-    const [isDisabled, setIsDisabled] = useState<Boolean>(props.isDisabled!);
+    const [isDisabled, setIsDisabled] = useState<boolean>(props.isDisabled);
 
     const visibleHandler = (): void => {
         props.onChecked!(props.id);
@@ -21,7 +21,7 @@ const TestCard = (props: ITestCardProps) => {
     };
 
     return (
-        <div className="test-card">
+        <div className={`test-card ${isDisabled && `not-active`}`}>
             <div className="test-card__wrapper">
                 <div>
                     <span>Название: {props.name}</span>
@@ -30,7 +30,7 @@ const TestCard = (props: ITestCardProps) => {
                     <span>Тема:{props.theme}</span>
                 </div>
                 <div>
-                    <span>{props.questionsAmount} вопросов</span>
+                    <span>Вопросы: {props.questionsAmount} шт</span>
                 </div>
                 <div>
                     <span>Активен</span>
@@ -42,7 +42,7 @@ const TestCard = (props: ITestCardProps) => {
                         }}
                     />
                 </div>
-                <img className="test-card__wrapper__icon" src={del} alt="Удалить" onClick={() => props.onDelete!(props.id)} />
+                <img className="test-card__wrapper__icon" src={del} alt="Удалить" onClick={() => props.onDelete(props.id)} />
             </div>
         </div>
     );

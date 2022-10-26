@@ -4,12 +4,13 @@ import "./button.scss";
 interface IButtonProps {
     text: string;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    disabled?: boolean;
 }
 
-const Button = (props: IButtonProps) => {
+const Button = ({ text, onClick, disabled }: IButtonProps) => {
     return (
-        <button className="button" onClick={props.onClick!}>
-            {props.text}
+        <button className={disabled ? "button disabled" : "button"} onClick={onClick} disabled={disabled ? true : false}>
+            {text}
         </button>
     );
 };

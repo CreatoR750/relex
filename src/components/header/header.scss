@@ -8,18 +8,57 @@
     align-items: center;
 
     &__logo {
+        cursor: pointer;
+        margin: 0;
         @include headerFont;
+        span {
+            font-size: 25px;
+            color: $orange;
+        }
     }
 
     &__nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 30%;
+        width: 35%;
 
         &__link {
             cursor: pointer;
             @include linksFont;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: $orange;
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
+            }
+
+            &:hover::after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+            }
         }
+    }
+}
+
+.active {
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(1);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: $orange;
+        transform-origin: bottom right;
     }
 }

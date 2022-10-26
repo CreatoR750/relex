@@ -8,14 +8,24 @@ import { ITest } from "../../models/test";
 import { IQuestion } from "../../models/questions";
 
 interface IAddCardProps {
-    setIsOpen: React.Dispatch<React.SetStateAction<Boolean>>;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
     onTestSave: (test: ITest) => void;
 }
 
 const AddCard = ({ setIsOpen, onTestSave }: IAddCardProps) => {
-    const [isModalOpen, setIsModalOpen] = useState<Boolean>(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [test, setTest] = useState<ITest>({ id: uuid(), name: "", theme: "", isDisabled: true, questions: [] });
     const [counter, setCounter] = useState<number>(0);
+
+    const [isDisabled, setIsDisabled] = useState<boolean>(true);
+
+    useEffect(() => {
+        if (test.name == "" || test.theme == "" || counter < 5) {
+            setIsDisabled(true);
+        } else {
+            setIsDisabled(false);
+        }
+    }, [test]);
 
     useEffect(() => {
         setCounter(test.questions.length);
@@ -27,7 +37,7 @@ const AddCard = ({ setIsOpen, onTestSave }: IAddCardProps) => {
         setTest(testCopy);
     };
 
-    const saveTest = () => {
+    const saveTest = (): void => {
         onTestSave(test);
         setIsOpen(false);
     };
@@ -38,6 +48,7 @@ const AddCard = ({ setIsOpen, onTestSave }: IAddCardProps) => {
                 <div>
                     <span>Название:</span>
                     <input
+                        className="add-card__input"
                         type="text"
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTest({ ...test, name: event.target.value })}
                     ></input>
@@ -45,6 +56,7 @@ const AddCard = ({ setIsOpen, onTestSave }: IAddCardProps) => {
                 <div>
                     <span>Тема:</span>
                     <input
+                        className="add-card__input"
                         type="text"
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTest({ ...test, theme: event.target.value })}
                     ></input>
@@ -56,7 +68,7 @@ const AddCard = ({ setIsOpen, onTestSave }: IAddCardProps) => {
                     </button>
                 </div>
                 <div>
-                    <Button text="Сохранить" onClick={() => saveTest()} />
+                    <Button text="Сохранить" onClick={() => saveTest()} disabled={isDisabled} />
                     <img className="test-card__wrapper__icon" src={del} alt="Удалить" onClick={() => setIsOpen(false)} />
                 </div>
             </div>

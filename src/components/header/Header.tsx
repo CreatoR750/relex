@@ -15,15 +15,25 @@ const Header: React.FC = () => {
     return (
         <header className="container">
             <div className="header">
-                <span className="header__logo">Admin Panel</span>
+                <h1 className="header__logo" onClick={() => navigate(RoutesConfig.TESTS_PAGE)}>
+                    Admin <span>Panel</span>
+                </h1>
                 <nav className="header__nav">
-                    <NavLink style={{ textDecoration: "none" }} className="header__nav__link" to={RoutesConfig.TESTS_PAGE}>
-                        Tests
+                    <NavLink
+                        style={{ textDecoration: "none" }}
+                        className={({ isActive }) => (isActive ? "header__nav__link active" : "header__nav__link")}
+                        to={RoutesConfig.TESTS_PAGE}
+                    >
+                        Тесты
                     </NavLink>
-                    <NavLink style={{ textDecoration: "none" }} className="header__nav__link" to={RoutesConfig.USERS_PAGE}>
-                        Users
+                    <NavLink
+                        style={{ textDecoration: "none" }}
+                        className={({ isActive }) => (isActive ? "header__nav__link active" : "header__nav__link")}
+                        to={RoutesConfig.USERS_PAGE}
+                    >
+                        Пользователи
                     </NavLink>
-                    <Button text="Log out" onClick={() => logoutHandler()} />
+                    <Button text="Выйти" onClick={() => logoutHandler()} />
                 </nav>
             </div>
         </header>

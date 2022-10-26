@@ -1,6 +1,5 @@
 export enum RoutesConfig {
-    MAIN_PAGE = "/",
-    LOGIN_PAGE = "/login",
+    LOGIN_PAGE = "/",
     TESTS_PAGE = "/tests",
     USERS_PAGE = "/users",
 }

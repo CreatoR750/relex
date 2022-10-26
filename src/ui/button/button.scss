@@ -13,3 +13,8 @@
     cursor: pointer;
     padding: 15px;
 }
+
+.disabled {
+    cursor: no-drop;
+    opacity: 0.5;
+}

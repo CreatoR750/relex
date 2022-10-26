@@ -13,6 +13,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+
     &__info {
         width: 100%;
         height: 60px;
@@ -23,7 +24,16 @@
         &__dropdown {
             display: flex;
             justify-content: space-between;
+
+            select {
+                font-size: 18px;
+                
+                option {
+                    font-size: 18px;
+                }
+            }
         }
+
         div {
             display: flex;
             width: 25%;
@@ -41,11 +51,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         div {
             display: flex;
             align-items: center;
             width: 25%;
         }
+
         span {
             font-size: 18px;
         }
@@ -57,6 +69,8 @@
         align-items: center;
         width: 100%;
         height: 40px;
+        border-bottom: 1px solid $orange;
+
         h1 {
             font-weight: 500;
         }
