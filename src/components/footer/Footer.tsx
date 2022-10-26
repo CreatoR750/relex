@@ -7,12 +7,7 @@ const Footer: React.FC = () => {
         <footer className="container">
             <div className="footer">
                 <span className="footer__logo">Admin Panel</span>
-                <div className="footer__icons">
-                    <img src={telegram} alt="Telegram" />
-                    <img src={telegram} alt="Telegram" />
-                    <img src={telegram} alt="Telegram" />
-                </div>
-                <span className="footer__copyright">2022</span>
+                <span className="footer__copyright">© 2022 CreatoR</span>
             </div>
         </footer>
     );

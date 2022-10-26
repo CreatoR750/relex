@@ -51,14 +51,6 @@ export const usersList: IUser[] = [
                 ],
             },
             {
-                id: "101",
-                name: "Сериалы",
-                attempts: [
-                    { id: "162", date: "01.01.2020 15:00", duration: "15", correctAnswers: 10, questions: 20 },
-                    { id: "163", date: "01.01.2020 15:00", duration: "15", correctAnswers: 10, questions: 20 },
-                ],
-            },
-            {
                 id: "120",
                 name: "TypeScript",
                 attempts: [

@@ -20,7 +20,7 @@ const AddCard = ({ setIsOpen, onTestSave }: IAddCardProps) => {
     const [isDisabled, setIsDisabled] = useState<boolean>(true);
 
     useEffect(() => {
-        if (test.name == "" || test.theme == "" || counter < 5) {
+        if (test.name === "" || test.theme === "" || counter < 4) {
             setIsDisabled(true);
         } else {
             setIsDisabled(false);
