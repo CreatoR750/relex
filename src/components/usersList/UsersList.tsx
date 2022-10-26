@@ -5,17 +5,12 @@ import { usersList } from "../../const/users";
 import { IUser } from "../../models/user";
 import { useNavigate } from "react-router-dom";
 import { RoutesConfig } from "../../config/routes.config";
+import useRedirect from "../../hooks/useRedirect";
 
 const UsersList = () => {
-    let navigate = useNavigate();
     const [users, setUsers] = useState<IUser[]>(usersList);
-    
-    useEffect(() => {
-        let auth: string | null = JSON.parse(localStorage.getItem("auth")!);
-        if (!auth) {
-            navigate(RoutesConfig.LOGIN_PAGE);
-        }
-    }, []);
+
+    useRedirect();
 
     return (
         <div className="container">

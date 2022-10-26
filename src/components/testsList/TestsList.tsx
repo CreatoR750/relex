@@ -7,19 +7,14 @@ import { ITest } from "../../models/test";
 import AddCard from "../../ui/addCard/AddCard";
 import { useNavigate } from "react-router-dom";
 import { RoutesConfig } from "../../config/routes.config";
-
+import useRedirect from "../../hooks/useRedirect";
 
 const TestsList = () => {
     const navigate = useNavigate();
     const [tests, setTests] = useState<ITest[]>(testsList);
     const [isAddCardOpen, setIsAddCardOpen] = useState<boolean>(false);
 
-    useEffect(() => {
-        let auth: string | null = JSON.parse(localStorage.getItem("auth")!);
-        if (!auth) {
-            navigate(RoutesConfig.LOGIN_PAGE);
-        }
-    }, []);
+    useRedirect();
 
     const addTest = (test: ITest): void => {
         let testsCopy = [...tests];

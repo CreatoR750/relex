@@ -22,7 +22,7 @@ export const usersList: IUser[] = [
                 id: "125",
                 name: "Фильмы",
                 attempts: [
-                    { id: "143", date: "2022-10-20 11:00", duration: "15", correctAnswers: 5, questions: 20 },
+                    { id: "143", date: "01.03.2020 11:00", duration: "15", correctAnswers: 5, questions: 20 },
                     { id: "144", date: "01.03.2020 12:30", duration: "20", correctAnswers: 15, questions: 20 },
                     { id: "145", date: "01.03.2020 14:00", duration: "17", correctAnswers: 20, questions: 20 },
                 ],

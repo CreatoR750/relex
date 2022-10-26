@@ -6,6 +6,7 @@ import Modal from "../../components/modal/Modal";
 import uuid from "react-uuid";
 import { ITest } from "../../models/test";
 import { IQuestion } from "../../models/questions";
+import { checkTest } from "./utils";
 
 interface IAddCardProps {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,11 +21,7 @@ const AddCard = ({ setIsOpen, onTestSave }: IAddCardProps) => {
     const [isDisabled, setIsDisabled] = useState<boolean>(true);
 
     useEffect(() => {
-        if (test.name === "" || test.theme === "" || counter < 4) {
-            setIsDisabled(true);
-        } else {
-            setIsDisabled(false);
-        }
+        setIsDisabled(checkTest(test, counter));
     }, [test]);
 
     useEffect(() => {

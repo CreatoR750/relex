@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../../ui/button/Button";
 import "./modal.scss";
 import { IQuestion } from "../../models/questions";
+import { checkQuestionContainer } from "./utils";
 
 interface IModalProps {
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,18 +14,7 @@ const Modal = ({ setIsOpen, onSave }: IModalProps) => {
     const [isDisabled, setIsDisabled] = useState<boolean>(true);
 
     useEffect(() => {
-        if (
-            questionContainer.question == "" ||
-            questionContainer[0] == "" ||
-            questionContainer[1] == "" ||
-            questionContainer[2] == "" ||
-            questionContainer[3] == "" ||
-            questionContainer.answer == -1
-        ) {
-            setIsDisabled(true);
-        } else {
-            setIsDisabled(false);
-        }
+        setIsDisabled(checkQuestionContainer(questionContainer));
     }, [questionContainer]);
 
     const closeButton = (e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
